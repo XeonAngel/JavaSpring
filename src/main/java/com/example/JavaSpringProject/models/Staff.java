@@ -4,6 +4,7 @@ import com.example.JavaSpringProject.models.Enums.Rank;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @EqualsAndHashCode(callSuper = false)
@@ -19,4 +20,7 @@ public class Staff extends Person {
 
     @OneToOne
     private Department managedDepartment;
+
+    @OneToMany(mappedBy = "doctor")
+    private List<Consultation> consultationList;
 }
