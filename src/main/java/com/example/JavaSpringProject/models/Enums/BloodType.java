@@ -1,4 +1,4 @@
-package com.example.JavaSpringProject.models;
+package com.example.JavaSpringProject.models.Enums;
 
 public enum BloodType {
     I_O,

@@ -14,8 +14,8 @@ Insert Into occupation(name,base_salary) Values ('Doctor',3300);
 Insert Into occupation(name,base_salary) Values ('Asistent Medical',2500);
 Insert Into occupation(name,base_salary) Values ('Bracardier',1800);
 
-Insert Into staff(last_name,first_name,birth_day, staff_rank,occupation_id,specialization_id) Values ('Kendrick','Begum',str_to_date('1960/02/03','%Y/%m/%d'),1,1,1);
-Insert Into staff(last_name,first_name,birth_day, staff_rank,occupation_id,specialization_id) Values ('Rose','Delaney',str_to_date('1980/04/07','%Y/%m/%d'),2,2,2);
-Insert Into staff(last_name,first_name,birth_day, staff_rank,occupation_id,specialization_id) Values ('Nicholas','Burch',str_to_date('1995/06/15','%Y/%m/%d'),3,3,3);
-Insert Into staff(last_name,first_name,birth_day, staff_rank,occupation_id,specialization_id) Values ('Kayleigh','Graves',str_to_date('1990/08/22','%Y/%m/%d'),3,4,4);
-Insert Into staff(last_name,first_name,birth_day, staff_rank,occupation_id,specialization_id) Values ('Jaxson','Fountain',str_to_date('1975/10/12','%Y/%m/%d'),2,2,5);
+Insert Into staff(last_name,first_name,birth_day, staff_rank,occupation_id,specialization_id) Values ('Kendrick','Begum',PARSEDATETIME('1960/02/03','yyyy/mm/dd'),1,1,1);
+Insert Into staff(last_name,first_name,birth_day, staff_rank,occupation_id,specialization_id) Values ('Rose','Delaney',PARSEDATETIME('1980/04/07','yyyy/mm/dd'),2,2,2);
+Insert Into staff(last_name,first_name,birth_day, staff_rank,occupation_id,specialization_id) Values ('Nicholas','Burch',PARSEDATETIME('1995/06/15','yyyy/mm/dd'),3,3,3);
+Insert Into staff(last_name,first_name,birth_day, staff_rank,occupation_id,specialization_id) Values ('Kayleigh','Graves',PARSEDATETIME('1990/08/22','yyyy/mm/dd'),3,4,4);
+Insert Into staff(last_name,first_name,birth_day, staff_rank,occupation_id,specialization_id) Values ('Jaxson','Fountain',PARSEDATETIME('1975/10/12','yyyy/mm/dd'),2,2,5);

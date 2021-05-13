@@ -1,6 +1,6 @@
-package com.example.JavaSpringProject.models;
+package com.example.JavaSpringProject.models.Enums;
 
-public enum Ranks {
+public enum Rank {
     General,
     Capitan,
     Second_Lieutenant,
