@@ -9,14 +9,14 @@ import java.time.LocalDate;
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
-    private String FirstName;
-    private String LastName;
+    private String firstName;
+    private String lastName;
 
-    private LocalDate BirthDay;
+    private LocalDate birthDay;
 
     public String getFullName(){
-        return FirstName + " " + LastName;
+        return firstName + " " + lastName;
     }
 }
