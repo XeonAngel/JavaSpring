@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments::html_head">
+</head>
+<body>
+<aside th:replace="fragments::menu"></aside>
+
+<div class="content-wrapper">
+
+    <h1 class="panel-title" th:text="${department.name}">Product</h1>
+
+    <li th:each="specialization:${department.getSpecializationList()}" th:text="${specialization.getName()}">
+        category 3
+    </li>
+</div>
+</body>
+</html>
