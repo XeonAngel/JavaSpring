@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments::html_head">
+</head>
+<body>
+<aside th:replace="fragments::menu"></aside>
+
+<div class="wrapper">
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Patients</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+
+                        <!--Custom html-->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <a class="btn btn-block btn-primary" href="/patients/create">
+                                        <i class="fas fa-plus"></i>
+                                        Add new patient
+                                    </a>
+                                </h3>
+                                <div class="card-tools">
+                                    <ul class="pagination pagination-sm float-right">
+                                        <li class="page-item"><a class="page-link" href="#">«</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">»</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body p-0">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 10px">#</th>
+                                        <th>Patient name</th>
+                                        <th>Blood type</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="patient : ${patients}">
+                                        <td th:text="${patient.getId()}"></td>
+                                        <td th:text="${patient.getFullName()}"></td>
+                                        <td th:text="${patient.getBloodType()}"></td>
+                                        <td>
+                                            <a href="#" th:href="@{'/patients/edit/' + ${patient.getId()}}">Edit</a> |
+                                            <a href="#"
+                                               th:href="@{'/patients/details/' + ${patient.getId()}}">Details</a> |
+                                            <a href="#"
+                                               th:href="@{'/patients/delete/' + ${patient.getId()}}">Delete</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--Custom html-->
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,8 +1,10 @@
 package com.example.JavaSpringProject.models;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -12,7 +14,8 @@ public class Consultation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDate created;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date created;
 
     @ManyToOne
     private Employee doctor;
