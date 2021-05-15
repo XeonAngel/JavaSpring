@@ -1,8 +1,6 @@
 package com.example.JavaSpringProject.controllers;
 
 import com.example.JavaSpringProject.models.Department;
-import com.example.JavaSpringProject.services.DepartmentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,15 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-public class DepartmentsController implements BaseController<Department> {
-
-    private DepartmentService departmentService;
-
-    @Autowired
-    public void setDepartmentService(DepartmentService departmentService) {
-        this.departmentService = departmentService;
-    }
-
+public class DepartmentsController extends BaseController<Department> {
     @GetMapping("/departments")
     @Override
     public ModelAndView index() {

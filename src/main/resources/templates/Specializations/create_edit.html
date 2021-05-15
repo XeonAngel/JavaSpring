@@ -37,6 +37,12 @@
                                                    id="name"
                                                    placeholder="Enter department name"
                                                    th:field="*{name}"/>
+                                            <label th:for="specDepartment">Department name:</label>
+                                            <select class="form-control" name="specDepartment" id="specDepartment" th:field="*{department.id}">
+                                                <option th:each="itemDepartment : ${departments}"
+                                                        th:value="${itemDepartment.getId()}" th:text="${itemDepartment.getName()}">
+                                                </option>
+                                            </select>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>

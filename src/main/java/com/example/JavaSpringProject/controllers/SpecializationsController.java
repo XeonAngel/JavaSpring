@@ -1,8 +1,6 @@
 package com.example.JavaSpringProject.controllers;
 
 import com.example.JavaSpringProject.models.Specialization;
-import com.example.JavaSpringProject.services.SpecializationService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,14 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-public class SpecializationsController implements BaseController<Specialization> {
-    private SpecializationService specializationService;
-
-    @Autowired
-    public void setSpecializationService(SpecializationService specializationService) {
-        this.specializationService = specializationService;
-    }
-
+public class SpecializationsController extends BaseController<Specialization> {
     @GetMapping("/specializations")
     @Override
     public ModelAndView index() {
@@ -35,6 +26,7 @@ public class SpecializationsController implements BaseController<Specialization>
     public ModelAndView create() {
         ModelAndView modelAndView = new ModelAndView("Specializations/create_edit");
         modelAndView.addObject("specialization", new Specialization());
+        modelAndView.addObject("departments",departmentService.findAll());
         return modelAndView;
     }
 
@@ -43,6 +35,7 @@ public class SpecializationsController implements BaseController<Specialization>
     public ModelAndView edit(@PathVariable String id) {
         ModelAndView modelAndView = new ModelAndView("Specializations/create_edit");
         modelAndView.addObject("specialization", specializationService.findById(Long.valueOf(id)));
+        modelAndView.addObject("departments",departmentService.findAll());
         return modelAndView;
     }
 
@@ -60,7 +53,7 @@ public class SpecializationsController implements BaseController<Specialization>
         modelAndView.addObject("specialization", specializationService.findById(Long.valueOf(id)));
         return modelAndView;
     }
-
+//TODO: try Catch
     @RequestMapping("/specializations/delete/{id}")
     @Override
     public String delete(@PathVariable String id) {
