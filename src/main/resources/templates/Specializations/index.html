@@ -11,7 +11,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Departments</h1>
+                        <h1>Specializations</h1>
                     </div>
                 </div>
             </div>
@@ -25,9 +25,9 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">
-                                    <a class="btn btn-block btn-primary" href="/departments/create">
+                                    <a class="btn btn-block btn-primary" href="/specializations/create">
                                         <i class="fas fa-plus"></i>
-                                        Add new department
+                                        Add new specialization
                                     </a>
                                 </h3>
                                 <div class="card-tools">
@@ -45,20 +45,22 @@
                                     <thead>
                                     <tr>
                                         <th style="width: 10px">#</th>
+                                        <th>Specialization name</th>
                                         <th>Department name</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="department : ${departments}">
-                                        <td th:text="${department.getId()}"></td>
-                                        <td th:text="${department.getName()}"></td>
+                                    <tr th:each="specialization : ${specializations}">
+                                        <td th:text="${specialization.getId()}"></td>
+                                        <td th:text="${specialization.getName()}"></td>
+                                        <td th:text="${specialization.department != null ? specialization.getDepartment().getName() : 'No department selected'}"></td>
                                         <td>
-                                            <a href="#" th:href="@{'/departments/edit/' + ${department.getId()}}">Edit</a> |
+                                            <a href="#" th:href="@{'/specializations/edit/' + ${specialization.getId()}}">Edit</a> |
                                             <a href="#"
-                                               th:href="@{'/departments/details/' + ${department.getId()}}">Details</a> |
+                                               th:href="@{'/specializations/details/' + ${specialization.getId()}}">Details</a> |
                                             <a href="#"
-                                               th:href="@{'/departments/delete/' + ${department.getId()}}">Delete</a>
+                                               th:href="@{'/specializations/delete/' + ${specialization.getId()}}">Delete</a>
                                         </td>
                                     </tr>
                                     </tbody>

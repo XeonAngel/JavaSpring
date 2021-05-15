@@ -11,7 +11,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Departments</h1>
+                        <h1>Specializations</h1>
                     </div>
                 </div>
             </div>
@@ -24,28 +24,29 @@
                         <!--Custom html-->
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title" th:text="'Department name: ' + ${department.getName()}"></h3>
+                                <h3 class="card-title" th:text="'Specialization name: ' + ${specialization.getName()}"></h3>
                             </div>
 
                             <div class="card-body">
                                 <dl class="row">
-                                    <dt class="col-sm-4">Manager:</dt>
+                                    <dt class="col-sm-4">Department:</dt>
                                     <dd class="col-sm-8"
-                                        th:text="${department.departmentManager != null ? department.getDepartmentManager().getFullName() : 'No manager selected'}"></dd>
+                                        th:text="${specialization.department != null ? specialization.getDepartment().getName() : 'No department selected'}">
+                                    </dd>
 
-                                    <dt class="col-sm-4">Specializations:</dt>
+                                    <dt class="col-sm-4">Specialized staff:</dt>
                                     <dd class="col-sm-8"
-                                        th:each="specialization, index:${department.getSpecializationList()}"
-                                        th:text="${specialization.getName()}"
+                                        th:each="staff, index:${specialization.getStaffList()}"
+                                        th:text="${staff.getFullName()}"
                                         th:classappend="${index.index==0?'':'offset-sm-4'}">
                                     </dd>
                                 </dl>
                             </div>
                         </div>
                         <a class="btn btn-block btn-primary col-sm-2"
-                           th:href="@{/departments/edit/{id}(id=${department.getId()})}">
+                           th:href="@{/specializations/edit/{id}(id=${specialization.getId()})}">
                             <i class="fas fa-edit"></i>
-                            Edit department
+                            Edit specialization
                         </a>
                         <!--Custom html-->
 
