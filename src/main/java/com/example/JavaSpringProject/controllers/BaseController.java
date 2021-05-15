@@ -11,7 +11,7 @@ public abstract class BaseController<T> implements IBaseController<T> {
     protected DistributorService distributorService;
     protected DrugService drugService;
     protected OccupationService occupationService;
-    protected StaffService staffService;
+    protected EmployeeService employeeService;
 
     @Autowired
     public void setDepartmentService(DepartmentService departmentService) {
@@ -49,7 +49,7 @@ public abstract class BaseController<T> implements IBaseController<T> {
     }
 
     @Autowired
-    public void setStaffService(StaffService staffService) {
-        this.staffService = staffService;
+    public void setEmployeeService(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 }

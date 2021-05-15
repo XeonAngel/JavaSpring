@@ -16,5 +16,5 @@ public class Occupation {
     private int baseSalary;
 
     @OneToMany(mappedBy = "occupation")
-    private List<Staff> staffList;
+    private List<Employee> employeeList;
 }

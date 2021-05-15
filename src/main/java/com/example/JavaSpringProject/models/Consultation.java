@@ -15,7 +15,7 @@ public class Consultation {
     private LocalDate created;
 
     @ManyToOne
-    private Staff doctor;
+    private Employee doctor;
 
     @ManyToOne
     private Patient patient;

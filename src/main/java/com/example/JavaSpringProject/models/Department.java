@@ -17,6 +17,6 @@ public class Department {
     @OneToMany(mappedBy = "department")
     private List<Specialization> specializationList;
 
-    @OneToOne
-    private Staff departmentManager;
+    @OneToOne(mappedBy = "managedDepartment")
+    private Employee departmentManager;
 }

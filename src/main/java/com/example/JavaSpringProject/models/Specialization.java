@@ -14,7 +14,7 @@ public class Specialization {
     private String name;
 
     @OneToMany(mappedBy = "specialization")
-    private List<Staff> staffList;
+    private List<Employee> employeeList;
 
     @ManyToOne
     private Department department;

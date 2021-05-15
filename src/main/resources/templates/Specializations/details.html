@@ -36,7 +36,7 @@
 
                                     <dt class="col-sm-4">Specialized staff:</dt>
                                     <dd class="col-sm-8"
-                                        th:each="staff, index:${specialization.getStaffList()}"
+                                        th:each="staff, index:${specialization.getEmployeeList()}"
                                         th:text="${staff.getFullName()}"
                                         th:classappend="${index.index==0?'':'offset-sm-4'}">
                                     </dd>

@@ -2,7 +2,7 @@ package com.example.JavaSpringProject.tests;
 
 import com.example.JavaSpringProject.models.Drug;
 import com.example.JavaSpringProject.models.Enums.Rank;
-import com.example.JavaSpringProject.models.Staff;
+import com.example.JavaSpringProject.models.Employee;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,17 +34,17 @@ public class EntityManagerTest {
 
     @Test
     public void updateStaff() {
-        Staff staffFound = entityManager.find(Staff.class, 1L);
-        staffFound.setStaffRank(Rank.General);
+        Employee employeeFound = entityManager.find(Employee.class, 1L);
+        employeeFound.setEmployeeRank(Rank.General);
 
-        entityManager.persist(staffFound);
+        entityManager.persist(employeeFound);
         entityManager.flush();
     }
 
     @Test
     public void checkRankUpdate() {
         updateStaff();
-        Staff staffFound = entityManager.find(Staff.class, 1L);
-        assertEquals(staffFound.getStaffRank(), Rank.General);
+        Employee employeeFound = entityManager.find(Employee.class, 1L);
+        assertEquals(employeeFound.getEmployeeRank(), Rank.General);
     }
 }

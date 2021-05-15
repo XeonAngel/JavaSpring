@@ -1,7 +1,7 @@
 package com.example.JavaSpringProject.tests;
 
-import com.example.JavaSpringProject.models.Staff;
-import com.example.JavaSpringProject.repositories.StaffRepository;
+import com.example.JavaSpringProject.models.Employee;
+import com.example.JavaSpringProject.repositories.EmployeeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
@@ -26,38 +26,38 @@ import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @ActiveProfiles("mysql")
 @Slf4j
-public class StaffTest {
+public class EmployeeTest {
     @Autowired
-    private StaffRepository staffRepository;
+    private EmployeeRepository employeeRepository;
 
     @Test
     public void findByName() {
-        List<Staff> staffList = staffRepository.findByLastNameLike("%ose%");
-        assertFalse(staffList.isEmpty());
+        List<Employee> employeeList = employeeRepository.findByLastNameLike("%ose%");
+        assertFalse(employeeList.isEmpty());
         log.info("findByLastNameLike ...");
-        staffList.forEach(staff -> log.info(staff.getLastName()));
+        employeeList.forEach(staff -> log.info(staff.getLastName()));
     }
 
     @Test
     public void findByIds() {
-        List<Staff> staffList = staffRepository.findByIdIn(Arrays.asList(1L, 2L));
-        assertFalse(staffList.isEmpty());
+        List<Employee> employeeList = employeeRepository.findByIdIn(Arrays.asList(1L, 2L));
+        assertFalse(employeeList.isEmpty());
         log.info("findByIds ...");
-        staffList.forEach(staff -> log.info(staff.getLastName()));
+        employeeList.forEach(staff -> log.info(staff.getLastName()));
     }
 
     @Test
     public void findBySpecialization() {
-        List<Staff> staffList = staffRepository.findBySpecializationId(1L);
-        assertFalse(staffList.isEmpty());
+        List<Employee> employeeList = employeeRepository.findBySpecializationId(1L);
+        assertFalse(employeeList.isEmpty());
         log.info("findBySpecialization ...");
-        staffList.forEach(staff -> log.info(staff.getLastName()));
+        employeeList.forEach(staff -> log.info(staff.getLastName()));
     }
 
     @Test
     public void findStaffPage() {
         Pageable firstPage = PageRequest.of(0, 2);
-        Page<Staff> allProducts = staffRepository.findAll(firstPage);
+        Page<Employee> allProducts = employeeRepository.findAll(firstPage);
         Assert.assertEquals(2, allProducts.getNumberOfElements());
     }
 }

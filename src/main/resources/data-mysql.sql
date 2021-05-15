@@ -14,11 +14,11 @@ Insert Into occupation(name,base_salary) Values ('Doctor',3300);
 Insert Into occupation(name,base_salary) Values ('Asistent Medical',2500);
 Insert Into occupation(name,base_salary) Values ('Bracardier',1800);
 
-Insert Into staff(last_name,first_name,birth_day, staff_rank,occupation_id,specialization_id) Values ('Kendrick','Begum',str_to_date('1960/02/03','%Y/%m/%d'),1,1,1);
-Insert Into staff(last_name,first_name,birth_day, staff_rank,occupation_id,specialization_id) Values ('Rose','Delaney',str_to_date('1980/04/07','%Y/%m/%d'),2,2,2);
-Insert Into staff(last_name,first_name,birth_day, staff_rank,occupation_id,specialization_id) Values ('Nicholas','Burch',str_to_date('1995/06/15','%Y/%m/%d'),3,3,3);
-Insert Into staff(last_name,first_name,birth_day, staff_rank,occupation_id,specialization_id) Values ('Kayleigh','Graves',str_to_date('1990/08/22','%Y/%m/%d'),3,4,4);
-Insert Into staff(last_name,first_name,birth_day, staff_rank,occupation_id,specialization_id) Values ('Jaxson','Fountain',str_to_date('1975/10/12','%Y/%m/%d'),2,2,5);
+Insert Into employee(last_name,first_name,birth_day,employee_rank,occupation_id,specialization_id) Values ('Kendrick','Begum',str_to_date('1960/02/03','%Y/%m/%d'),1,1,1);
+Insert Into employee(last_name,first_name,birth_day,employee_rank,occupation_id,specialization_id) Values ('Rose','Delaney',str_to_date('1980/04/07','%Y/%m/%d'),2,2,2);
+Insert Into employee(last_name,first_name,birth_day,employee_rank,occupation_id,specialization_id) Values ('Nicholas','Burch',str_to_date('1995/06/15','%Y/%m/%d'),3,3,3);
+Insert Into employee(last_name,first_name,birth_day,employee_rank,occupation_id,specialization_id) Values ('Kayleigh','Graves',str_to_date('1990/08/22','%Y/%m/%d'),3,4,4);
+Insert Into employee(last_name,first_name,birth_day,employee_rank,occupation_id,specialization_id) Values ('Jaxson','Fountain',str_to_date('1975/10/12','%Y/%m/%d'),2,2,5);
 
 Insert Into patient(last_name,first_name,birth_day,blood_type) Values ('Thalia','Thorne',str_to_date('17/12/1983','%d/%m/%Y'),0);
 Insert Into patient(last_name,first_name,birth_day,blood_type) Values ('Veronika','Barrow',str_to_date('23/3/1935','%d/%m/%Y'),1);

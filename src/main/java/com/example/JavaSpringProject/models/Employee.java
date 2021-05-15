@@ -9,8 +9,8 @@ import java.util.List;
 @Entity
 @EqualsAndHashCode(callSuper = false)
 @Data
-public class Staff extends Person {
-    private Rank staffRank;
+public class Employee extends Person {
+    private Rank employeeRank;
 
     @ManyToOne
     private Occupation occupation;
