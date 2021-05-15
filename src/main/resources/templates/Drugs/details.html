@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments::html_head">
+</head>
+<body>
+<aside th:replace="fragments::menu"></aside>
+
+<div class="wrapper">
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Drugs</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+
+                        <!--Custom html-->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title" th:text="'Drug name: ' + ${drug.getName()}"></h3>
+                            </div>
+
+                            <div class="card-body">
+                                <dl class="row">
+                                    <dt class="col-sm-4">Drug category:</dt>
+                                    <dd class="col-sm-8"
+                                        th:text="${drug.getDrugCategory()}">
+                                    </dd>
+                                    <dt class="col-sm-4">Price:</dt>
+                                    <dd class="col-sm-8"
+                                        th:text="${drug.getPrice()}">
+                                    </dd>
+                                    <dt class="col-sm-4">Stock:</dt>
+                                    <dd class="col-sm-8"
+                                        th:text="${drug.getStock()}">
+                                    </dd>
+                                    <dt class="col-sm-4">Distributor:</dt>
+                                    <dd class="col-sm-8"
+                                        th:text="${drug.getDistributor().getName()}">
+                                    </dd>
+
+                                    <dt class="col-sm-4">Consultations:</dt>
+                                    <dd class="col-sm-8"
+                                        th:each="consultation, index:${drug.getConsultations()}"
+                                        th:text="${consultation.getPatient().getFullName()}"
+                                        th:classappend="${index.index==0?'':'offset-sm-4'}">
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <a class="btn btn-block btn-primary col-sm-2"
+                           th:href="@{/drugs/edit/{id}(id=${drug.getId()})}">
+                            <i class="fas fa-edit"></i>
+                            Edit drug
+                        </a>
+                        <!--Custom html-->
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+</body>
+</html>

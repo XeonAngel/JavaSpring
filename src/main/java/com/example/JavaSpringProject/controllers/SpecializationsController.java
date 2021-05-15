@@ -53,7 +53,7 @@ public class SpecializationsController extends BaseController<Specialization> {
         modelAndView.addObject("specialization", specializationService.findById(Long.valueOf(id)));
         return modelAndView;
     }
-//TODO: try Catch
+    //TODO: try Catch
     @RequestMapping("/specializations/delete/{id}")
     @Override
     public String delete(@PathVariable String id) {

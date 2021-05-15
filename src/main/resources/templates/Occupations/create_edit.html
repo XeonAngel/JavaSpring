@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments::html_head">
+</head>
+<body>
+<aside th:replace="fragments::menu"></aside>
+
+<div class="wrapper">
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Occupations</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+
+                        <!--Custom html-->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Add occupation</h3>
+                            </div>
+                            <form th:object="${occupation}" th:action="@{/occupations/create_edit}" method="post">
+                                <input type="hidden" th:field="*{id}"/>
+                                <div class="card-body">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label th:for="name">Occupation name:</label>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="name"
+                                                   placeholder="Enter occupation name"
+                                                   th:field="*{name}"/>
+                                            <label th:for="salary">Base salary:</label>
+                                            <input type="number"
+                                                   class="form-control"
+                                                   id="salary"
+                                                   placeholder="Enter base salary"
+                                                   th:field="*{baseSalary}"/>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!--Custom html-->
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+</body>
+</html>

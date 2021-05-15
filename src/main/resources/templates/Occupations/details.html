@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments::html_head">
+</head>
+<body>
+<aside th:replace="fragments::menu"></aside>
+
+<div class="wrapper">
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Occupations</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+
+                        <!--Custom html-->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title" th:text="'Occupation name: ' + ${occupation.getName()}"></h3>
+                            </div>
+
+                            <div class="card-body">
+                                <dl class="row">
+                                    <dt class="col-sm-4">Base salary:</dt>
+                                    <dd class="col-sm-8"
+                                        th:text="${occupation.getBaseSalary()}">
+                                    </dd>
+
+                                    <dt class="col-sm-4">Staff:</dt>
+                                    <dd class="col-sm-8"
+                                        th:each="staff, index:${occupation.getStaffList()}"
+                                        th:text="${staff.getFullName()}"
+                                        th:classappend="${index.index==0?'':'offset-sm-4'}">
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <a class="btn btn-block btn-primary col-sm-2"
+                           th:href="@{/occupations/edit/{id}(id=${occupation.getId()})}">
+                            <i class="fas fa-edit"></i>
+                            Edit occupation
+                        </a>
+                        <!--Custom html-->
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+</body>
+</html>

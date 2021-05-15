@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments::html_head">
+</head>
+<body>
+<aside th:replace="fragments::menu"></aside>
+
+<div class="wrapper">
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Drugs</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+
+                        <!--Custom html-->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Add drug</h3>
+                            </div>
+                            <form th:object="${drug}" th:action="@{/drugs/create_edit}" method="post">
+                                <input type="hidden" th:field="*{id}"/>
+                                <div class="card-body">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label th:for="name">Drug name:</label>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="name"
+                                                   placeholder="Enter drug name"
+                                                   th:field="*{name}"/>
+                                            <label th:for="category">Drug category:</label>
+                                            <select class="form-control" name="category" id="category" th:field="*{drugCategory}">
+                                                <option th:each="itemCategory : ${categories}"
+                                                        th:value="${itemCategory}" th:text="${itemCategory}">
+                                                </option>
+                                            </select>
+                                            <label th:for="price">Price:</label>
+                                            <input type="number"
+                                                   class="form-control"
+                                                   id="price"
+                                                   placeholder="Enter drug price"
+                                                   th:field="*{price}"/>
+                                            <label th:for="stock">Stock:</label>
+                                            <input type="number"
+                                                   class="form-control"
+                                                   id="stock"
+                                                   placeholder="Enter drug stock"
+                                                   th:field="*{stock}"/>
+                                            <label th:for="drugDistributor">Distributor:</label>
+                                            <select class="form-control" name="drugDistributor" id="drugDistributor" th:field="*{distributor.id}">
+                                                <option th:each="itemDistributor : ${distributors}"
+                                                        th:value="${itemDistributor.getId()}" th:text="${itemDistributor.getName()}">
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!--Custom html-->
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+</body>
+</html>

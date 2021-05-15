@@ -34,7 +34,7 @@ Insert Into distributor(name) Values ('Pfizer');
 Insert Into drug(name,price,stock,distributor_id,drug_category) Values ('Flucovim',20,200,1,1);
 Insert Into drug(name,price,stock,distributor_id,drug_category) Values ('Omeprazol',39,150,2,1);
 Insert Into drug(name,price,stock,distributor_id,drug_category) Values ('NovoPone',15,200,3,1);
-Insert Into drug(name,price,stock,distributor_id,drug_category) Values ('Vitamina C',12,400,4,4);
+Insert Into drug(name,price,stock,distributor_id,drug_category) Values ('Vitamina C',12,400,4,3);
 
 Insert Into consultation(created, doctor_id, patient_id) Values (CURDATE(),2,1);
 Insert Into consultation(created, doctor_id, patient_id) Values (CURDATE(),5,2);

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments::html_head">
+</head>
+<body>
+<aside th:replace="fragments::menu"></aside>
+
+<div class="wrapper">
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Occupations</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+
+                        <!--Custom html-->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <a class="btn btn-block btn-primary" href="/occupations/create">
+                                        <i class="fas fa-plus"></i>
+                                        Add new occupation
+                                    </a>
+                                </h3>
+                                <div class="card-tools">
+                                    <ul class="pagination pagination-sm float-right">
+                                        <li class="page-item"><a class="page-link" href="#">«</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">»</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body p-0">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 10px">#</th>
+                                        <th>Occupation name</th>
+                                        <th>Occupation base salary</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="occupation : ${occupations}">
+                                        <td th:text="${occupation.getId()}"></td>
+                                        <td th:text="${occupation.getName()}"></td>
+                                        <td th:text="${occupation.getBaseSalary()}"></td>
+                                        <td>
+                                            <a href="#" th:href="@{'/occupations/edit/' + ${occupation.getId()}}">Edit</a> |
+                                            <a href="#"
+                                               th:href="@{'/occupations/details/' + ${occupation.getId()}}">Details</a> |
+                                            <a href="#"
+                                               th:href="@{'/occupations/delete/' + ${occupation.getId()}}">Delete</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--Custom html-->
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+</body>
+</html>
