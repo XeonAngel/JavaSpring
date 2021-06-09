@@ -2,11 +2,14 @@ package com.example.JavaSpringProject.models;
 
 import com.example.JavaSpringProject.models.Enums.Drug_Category;
 import lombok.Data;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Data
+@ToString(onlyExplicitlyIncluded = true)
 public class Drug {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

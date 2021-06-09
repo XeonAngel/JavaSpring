@@ -1,6 +1,7 @@
 package com.example.JavaSpringProject.models;
 
 import lombok.Data;
+import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Data
+@ToString(onlyExplicitlyIncluded = true)
 public class Consultation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
