@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -15,9 +16,11 @@ import java.util.List;
 public class Employee extends Person {
     private Rank employeeRank;
 
+    @NotNull(message = "Occupation is required")
     @ManyToOne
     private Occupation occupation;
 
+    @NotNull(message = "Specialization is required")
     @ManyToOne
     private Specialization specialization;
 

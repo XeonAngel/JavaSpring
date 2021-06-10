@@ -1,5 +1,6 @@
 package com.example.JavaSpringProject.services;
 
+import com.example.JavaSpringProject.exceptions.ResourceNotFoundException;
 import com.example.JavaSpringProject.models.Employee;
 import com.example.JavaSpringProject.repositories.EmployeeRepository;
 import com.example.JavaSpringProject.services.interfaces.IEmployeeService;
@@ -30,7 +31,7 @@ public class EmployeeService implements IEmployeeService {
     public Employee findById(Long Id) {
         Optional<Employee> optionalStaff = employeeRepository.findById(Id);
         if (optionalStaff.isEmpty()) {
-            throw new RuntimeException("Staff not found!");
+            throw new ResourceNotFoundException("Employee " + Id + " not found!");
         }
         return optionalStaff.get();
     }
@@ -42,6 +43,10 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public void deleteById(Long Id) {
+        Optional<Employee> optionalStaff = employeeRepository.findById(Id);
+        if (optionalStaff.isEmpty()) {
+            throw new ResourceNotFoundException("Employee " + Id + " not found!");
+        }
         employeeRepository.deleteById(Id);
     }
 }

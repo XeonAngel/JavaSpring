@@ -3,12 +3,11 @@ package com.example.JavaSpringProject.controllers;
 import com.example.JavaSpringProject.models.Employee;
 import com.example.JavaSpringProject.models.Enums.Rank;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -48,12 +47,15 @@ public class EmployeesController extends BaseController<Employee> {
 
     @PostMapping("/employees/create_edit")
     @Override
-    public String saveOrUpdate(Employee entity) {
+    public String saveOrUpdate(Employee entity, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "Employees/create_edit";
+        }
         if (entity.getManagedDepartment().getId() == -1) {
             entity.setManagedDepartment(null);
         }
         Employee savedEmployee = employeeService.save(entity);
-        return "redirect:/employees";
+        return "redirect:/Employees";
     }
 
     @GetMapping("/employees/details/{id}")

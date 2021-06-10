@@ -1,5 +1,6 @@
 package com.example.JavaSpringProject.services;
 
+import com.example.JavaSpringProject.exceptions.ResourceNotFoundException;
 import com.example.JavaSpringProject.models.Consultation;
 import com.example.JavaSpringProject.repositories.ConsultationRepository;
 import com.example.JavaSpringProject.services.interfaces.IConsultationService;
@@ -30,7 +31,7 @@ public class ConsultationService implements IConsultationService {
     public Consultation findById(Long Id) {
         Optional<Consultation> optionalConsultation = consultationRepository.findById(Id);
         if (optionalConsultation.isEmpty()) {
-            throw new RuntimeException("Consultation not found!");
+            throw new ResourceNotFoundException("Consultation " + Id + " not found!");
         }
         return optionalConsultation.get();
     }
@@ -42,6 +43,10 @@ public class ConsultationService implements IConsultationService {
 
     @Override
     public void deleteById(Long Id) {
+        Optional<Consultation> optionalConsultation = consultationRepository.findById(Id);
+        if (optionalConsultation.isEmpty()) {
+            throw new ResourceNotFoundException("Consultation " + Id + " not found!");
+        }
         consultationRepository.deleteById(Id);
     }
 }

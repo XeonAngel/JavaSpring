@@ -5,6 +5,7 @@ import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
@@ -19,9 +20,11 @@ public class Consultation {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date created;
 
+    @NotNull(message = "Doctor is required")
     @ManyToOne
     private Employee doctor;
 
+    @NotNull(message = "Patient is required")
     @ManyToOne
     private Patient patient;
 

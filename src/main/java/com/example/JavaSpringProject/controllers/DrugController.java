@@ -3,12 +3,11 @@ package com.example.JavaSpringProject.controllers;
 import com.example.JavaSpringProject.models.Drug;
 import com.example.JavaSpringProject.models.Enums.Drug_Category;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -44,9 +43,12 @@ public class DrugController extends BaseController<Drug> {
 
     @PostMapping("/drugs/create_edit")
     @Override
-    public String saveOrUpdate(Drug entity) {
+    public String saveOrUpdate(Drug entity, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "Drugs/create_edit";
+        }
         Drug savedDrug =  drugService.save(entity);
-        return "redirect:/drugs";
+        return "redirect:/Drugs";
     }
 
     @GetMapping("/drugs/details/{id}")

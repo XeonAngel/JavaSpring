@@ -1,5 +1,6 @@
 package com.example.JavaSpringProject.services;
 
+import com.example.JavaSpringProject.exceptions.ResourceNotFoundException;
 import com.example.JavaSpringProject.models.Specialization;
 import com.example.JavaSpringProject.repositories.SpecializationRepository;
 import com.example.JavaSpringProject.services.interfaces.ISpecializationService;
@@ -30,7 +31,7 @@ public class SpecializationService implements ISpecializationService {
     public Specialization findById(Long Id) {
         Optional<Specialization> optionalSpecialization = specializationRepository.findById(Id);
         if (optionalSpecialization.isEmpty()) {
-            throw new RuntimeException("Specialization not found!");
+            throw new ResourceNotFoundException("Specialization " + Id + " not found!");
         }
         return optionalSpecialization.get();
     }
@@ -42,6 +43,10 @@ public class SpecializationService implements ISpecializationService {
 
     @Override
     public void deleteById(Long Id) {
+        Optional<Specialization> optionalSpecialization = specializationRepository.findById(Id);
+        if (optionalSpecialization.isEmpty()) {
+            throw new ResourceNotFoundException("Specialization " + Id + " not found!");
+        }
         specializationRepository.deleteById(Id);
     }
 }

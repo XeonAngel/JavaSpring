@@ -3,12 +3,11 @@ package com.example.JavaSpringProject.controllers;
 import com.example.JavaSpringProject.models.Enums.BloodType;
 import com.example.JavaSpringProject.models.Patient;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -42,9 +41,12 @@ public class PatientsController extends BaseController<Patient> {
 
     @PostMapping("/patients/create_edit")
     @Override
-    public String saveOrUpdate(Patient entity) {
+    public String saveOrUpdate(Patient entity, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "Patients/create_edit";
+        }
         Patient savedPatient = patientService.save(entity);
-        return "redirect:/patients";
+        return "redirect:/Patients";
     }
 
     @GetMapping("/patients/details/{id}")

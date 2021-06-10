@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -14,6 +16,8 @@ public class Distributor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Size(message = "No more than 200 characters", max = 200)
+    @NotNull(message = "Distributor name is required")
     private String name;
 
     @OneToMany(mappedBy = "distributor")

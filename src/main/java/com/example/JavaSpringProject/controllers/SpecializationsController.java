@@ -2,12 +2,11 @@ package com.example.JavaSpringProject.controllers;
 
 import com.example.JavaSpringProject.models.Specialization;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -41,9 +40,12 @@ public class SpecializationsController extends BaseController<Specialization> {
 
     @PostMapping("/specializations/create_edit")
     @Override
-    public String saveOrUpdate(Specialization entity) {
+    public String saveOrUpdate(Specialization entity, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "Specializations/create_edit";
+        }
         Specialization savedSpecialization = specializationService.save(entity);
-        return "redirect:/specializations";
+        return "redirect:/Specializations";
     }
 
     @GetMapping("/specializations/details/{id}")

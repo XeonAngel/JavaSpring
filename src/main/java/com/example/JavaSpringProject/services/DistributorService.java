@@ -1,5 +1,6 @@
 package com.example.JavaSpringProject.services;
 
+import com.example.JavaSpringProject.exceptions.ResourceNotFoundException;
 import com.example.JavaSpringProject.models.Distributor;
 import com.example.JavaSpringProject.repositories.DistributorRepository;
 import com.example.JavaSpringProject.services.interfaces.IDistributorService;
@@ -30,7 +31,7 @@ public class DistributorService implements IDistributorService {
     public Distributor findById(Long Id) {
         Optional<Distributor> optionalDistributor = distributorRepository.findById(Id);
         if (optionalDistributor.isEmpty()) {
-            throw new RuntimeException("Distributor not found!");
+            throw new ResourceNotFoundException("Distributor " + Id + " not found!");
         }
         return optionalDistributor.get();
     }
@@ -42,6 +43,10 @@ public class DistributorService implements IDistributorService {
 
     @Override
     public void deleteById(Long Id) {
+        Optional<Distributor> optionalDistributor = distributorRepository.findById(Id);
+        if (optionalDistributor.isEmpty()) {
+            throw new ResourceNotFoundException("Distributor " + Id + " not found!");
+        }
         distributorRepository.deleteById(Id);
     }
 }

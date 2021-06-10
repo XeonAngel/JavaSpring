@@ -1,5 +1,6 @@
 package com.example.JavaSpringProject.services;
 
+import com.example.JavaSpringProject.exceptions.ResourceNotFoundException;
 import com.example.JavaSpringProject.models.Department;
 import com.example.JavaSpringProject.repositories.DepartmentRepository;
 import com.example.JavaSpringProject.services.interfaces.IDepartmentService;
@@ -30,7 +31,7 @@ public class DepartmentService implements IDepartmentService {
     public Department findById(Long Id) {
         Optional<Department> optionalDepartment = departmentRepository.findById(Id);
         if (optionalDepartment.isEmpty()) {
-            throw new RuntimeException("Department not found!");
+            throw new ResourceNotFoundException("Department " + Id + " not found!");
         }
         return optionalDepartment.get();
     }
@@ -42,6 +43,10 @@ public class DepartmentService implements IDepartmentService {
 
     @Override
     public void deleteById(Long Id) {
+        Optional<Department> optionalDepartment = departmentRepository.findById(Id);
+        if (optionalDepartment.isEmpty()) {
+            throw new ResourceNotFoundException("Department " + Id + " not found!");
+        }
         departmentRepository.deleteById(Id);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.JavaSpringProject.services;
 
+import com.example.JavaSpringProject.exceptions.ResourceNotFoundException;
 import com.example.JavaSpringProject.models.Drug;
 import com.example.JavaSpringProject.repositories.DrugRepository;
 import com.example.JavaSpringProject.services.interfaces.IDrugService;
@@ -30,7 +31,7 @@ public class DrugService implements IDrugService {
     public Drug findById(Long Id) {
         Optional<Drug> optionalDrug = drugRepository.findById(Id);
         if (optionalDrug.isEmpty()) {
-            throw new RuntimeException("Drug not found!");
+            throw new ResourceNotFoundException("Drug " + Id + " not found!");
         }
         return optionalDrug.get();
     }
@@ -42,6 +43,10 @@ public class DrugService implements IDrugService {
 
     @Override
     public void deleteById(Long Id) {
+        Optional<Drug> optionalDrug = drugRepository.findById(Id);
+        if (optionalDrug.isEmpty()) {
+            throw new ResourceNotFoundException("Drug " + Id + " not found!");
+        }
         drugRepository.deleteById(Id);
     }
 }
