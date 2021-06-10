@@ -37,24 +37,36 @@
                                                    id="firstName"
                                                    placeholder="Firstname"
                                                    th:field="*{firstName}"/>
+                                            <label class="text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></label>
+                                            <br>
+
                                             <label th:for="lastName">Patient lastName:</label>
                                             <input type="text"
                                                    class="form-control"
                                                    id="lastName"
                                                    placeholder="Lastname"
                                                    th:field="*{lastName}"/>
+                                            <label class="text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></label>
+                                            <br>
+
                                             <label th:for="birthDay">Patient birthday:</label>
                                             <input type="date"
                                                    class="form-control"
                                                    id="birthDay"
                                                    placeholder="Birthday"
                                                    th:field="*{birthDay}"/>
+                                            <label class="text-danger" th:if="${#fields.hasErrors('birthDay')}" th:errors="*{birthDay}"></label>
+                                            <br>
+
                                             <label th:for="blood_type">Blood type:</label>
                                             <select class="form-control" name="blood_type" id="blood_type" th:field="*{bloodType}">
                                                 <option th:each="itemBlood_type : ${bloodTypes}"
                                                         th:value="${itemBlood_type}" th:text="${itemBlood_type}">
                                                 </option>
                                             </select>
+                                            <label class="text-danger" th:if="${#fields.hasErrors('bloodType')}" th:errors="*{bloodType}"></label>
+                                            <br>
+
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>

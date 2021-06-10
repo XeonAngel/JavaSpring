@@ -38,6 +38,8 @@
                                                         th:value="${itemPatient.getId()}" th:text="${itemPatient.getFullName()}">
                                                 </option>
                                             </select>
+                                            <label class="text-danger" th:if="${#fields.hasErrors('patient')}" th:errors="*{patient}"></label>
+                                            <br>
 
                                             <label th:for="doctorName">Doctor name:</label>
                                             <select class="form-control" name="doctorName" id="doctorName" th:field="*{doctor.id}">
@@ -45,6 +47,8 @@
                                                         th:value="${itemDoctor.getId()}" th:text="${itemDoctor.getFullName()}">
                                                 </option>
                                             </select>
+                                            <label class="text-danger" th:if="${#fields.hasErrors('doctor')}" th:errors="*{doctor}"></label>
+                                            <br>
 
                                             <label th:for="drugsName">Drugs:</label>
                                             <select class="form-control" name="drugsName" id="drugsName" th:field="*{drugs}" size="10" multiple="multiple">
@@ -53,6 +57,8 @@
                                                         th:text="${itemDrug.getName()}">
                                                 </option>
                                             </select>
+                                            <label class="text-danger" th:if="${#fields.hasErrors('drugs')}" th:errors="*{drugs}"></label>
+                                            <br>
 
                                         </div>
                                     </div>

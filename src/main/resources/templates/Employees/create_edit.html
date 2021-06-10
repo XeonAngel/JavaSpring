@@ -37,36 +37,54 @@
                                                    id="firstName"
                                                    placeholder="Firstname"
                                                    th:field="*{firstName}"/>
+                                            <label class="text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></label>
+                                            <br>
+
                                             <label th:for="lastName">Employee lastName:</label>
                                             <input type="text"
                                                    class="form-control"
                                                    id="lastName"
                                                    placeholder="Lastname"
                                                    th:field="*{lastName}"/>
+                                            <label class="text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></label>
+                                            <br>
+
                                             <label th:for="birthDay">Employee birthday:</label>
                                             <input type="date"
                                                    class="form-control"
                                                    id="birthDay"
                                                    placeholder="Birthday"
                                                    th:field="*{birthDay}"/>
+                                            <label class="text-danger" th:if="${#fields.hasErrors('birthDay')}" th:errors="*{birthDay}"></label>
+                                            <br>
+
                                             <label th:for="rank">Rank:</label>
                                             <select class="form-control" name="rank" id="rank" th:field="*{employeeRank}">
                                                 <option th:each="itemRank : ${ranks}"
                                                         th:value="${itemRank}" th:text="${itemRank}">
                                                 </option>
                                             </select>
+                                            <label class="text-danger" th:if="${#fields.hasErrors('employeeRank')}" th:errors="*{employeeRank}"></label>
+                                            <br>
+
                                             <label th:for="occupation">Occupation:</label>
                                             <select class="form-control" name="occupation" id="occupation" th:field="*{occupation.id}">
                                                 <option th:each="itemOccupation : ${occupations}"
                                                         th:value="${itemOccupation.getId()}" th:text="${itemOccupation.getName()}">
                                                 </option>
                                             </select>
+                                            <label class="text-danger" th:if="${#fields.hasErrors('occupation')}" th:errors="*{occupation}"></label>
+                                            <br>
+
                                             <label th:for="specialization">Specialization:</label>
                                             <select class="form-control" name="specialization" id="specialization" th:field="*{specialization.id}">
                                                 <option th:each="itemSpecialization : ${specializations}"
                                                         th:value="${itemSpecialization.getId()}" th:text="${itemSpecialization.getName()}">
                                                 </option>
                                             </select>
+                                            <label class="text-danger" th:if="${#fields.hasErrors('specialization')}" th:errors="*{specialization}"></label>
+                                            <br>
+
                                             <label th:for="managedDepartment">Department to manage:</label>
                                             <select class="form-control" name="managedDepartment" id="managedDepartment" th:field="*{managedDepartment.id}">
                                                 <option value="-1">None</option>
@@ -74,6 +92,8 @@
                                                         th:value="${itemDepartment.getId()}" th:text="${itemDepartment.getName()}">
                                                 </option>
                                             </select>
+                                            <label class="text-danger" th:if="${#fields.hasErrors('managedDepartment')}" th:errors="*{managedDepartment}"></label>
+                                            <br>
 
                                         </div>
                                     </div>

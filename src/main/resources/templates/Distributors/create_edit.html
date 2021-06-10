@@ -38,6 +38,7 @@
                                                    placeholder="Enter distributor name"
                                                    th:field="*{name}"/>
                                             <label class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></label>
+                                            <br>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
