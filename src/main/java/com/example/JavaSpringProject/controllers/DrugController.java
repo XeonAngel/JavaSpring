@@ -43,12 +43,15 @@ public class DrugController extends BaseController<Drug> {
 
     @PostMapping("/drugs/create_edit")
     @Override
-    public String saveOrUpdate(Drug entity, BindingResult bindingResult) {
+    public ModelAndView saveOrUpdate(Drug entity, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "Drugs/create_edit";
+            ModelAndView modelAndView = new ModelAndView("Drugs/create_edit");
+            modelAndView.addObject("categories", Drug_Category.values());
+            modelAndView.addObject("distributors",distributorService.findAll());
+            return modelAndView;
         }
         Drug savedDrug =  drugService.save(entity);
-        return "redirect:/Drugs";
+        return new ModelAndView("redirect:/drugs");
     }
 
     @GetMapping("/drugs/details/{id}")

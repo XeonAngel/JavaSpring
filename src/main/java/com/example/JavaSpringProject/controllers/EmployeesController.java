@@ -47,15 +47,20 @@ public class EmployeesController extends BaseController<Employee> {
 
     @PostMapping("/employees/create_edit")
     @Override
-    public String saveOrUpdate(Employee entity, BindingResult bindingResult) {
+    public ModelAndView saveOrUpdate(Employee entity, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "Employees/create_edit";
+            ModelAndView modelAndView = new ModelAndView("Employees/create_edit");
+            modelAndView.addObject("ranks", Rank.values());
+            modelAndView.addObject("occupations", occupationService.findAll());
+            modelAndView.addObject("specializations", specializationService.findAll());
+            modelAndView.addObject("departments", departmentService.findAll());
+            return modelAndView;
         }
         if (entity.getManagedDepartment().getId() == -1) {
             entity.setManagedDepartment(null);
         }
         Employee savedEmployee = employeeService.save(entity);
-        return "redirect:/Employees";
+        return new ModelAndView("redirect:/employees");
     }
 
     @GetMapping("/employees/details/{id}")

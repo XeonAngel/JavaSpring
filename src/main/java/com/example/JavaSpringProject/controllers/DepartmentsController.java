@@ -30,13 +30,13 @@ public class DepartmentsController extends BaseController<Department> {
 
     @PostMapping("/departments/create_edit")
     @Override
-    public String saveOrUpdate(Department entity, BindingResult bindingResult) {
+    public ModelAndView saveOrUpdate(Department entity, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "Departments/create_edit";
+            return new ModelAndView("Departments/create_edit");
         }
         Department savedDepartment = departmentService.save(entity);
         //return "redirect:/departments/details/" + savedDepartment.getId();
-        return "redirect:/Departments";
+        return new ModelAndView("redirect:/departments");
     }
 
     @GetMapping("/departments/edit/{id}")

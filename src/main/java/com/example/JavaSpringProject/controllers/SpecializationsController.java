@@ -40,12 +40,14 @@ public class SpecializationsController extends BaseController<Specialization> {
 
     @PostMapping("/specializations/create_edit")
     @Override
-    public String saveOrUpdate(Specialization entity, BindingResult bindingResult) {
+    public ModelAndView saveOrUpdate(Specialization entity, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "Specializations/create_edit";
+            ModelAndView modelAndView = new ModelAndView("Specializations/create_edit");
+            modelAndView.addObject("departments",departmentService.findAll());
+            return modelAndView;
         }
         Specialization savedSpecialization = specializationService.save(entity);
-        return "redirect:/Specializations";
+        return new ModelAndView("redirect:/specializations");
     }
 
     @GetMapping("/specializations/details/{id}")
@@ -55,7 +57,7 @@ public class SpecializationsController extends BaseController<Specialization> {
         modelAndView.addObject("specialization", specializationService.findById(Long.valueOf(id)));
         return modelAndView;
     }
-    //TODO: try Catch
+
     @RequestMapping("/specializations/delete/{id}")
     @Override
     public String delete(@PathVariable String id) {

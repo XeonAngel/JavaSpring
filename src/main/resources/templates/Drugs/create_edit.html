@@ -37,30 +37,45 @@
                                                    id="name"
                                                    placeholder="Enter drug name"
                                                    th:field="*{name}"/>
+                                            <label class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></label>
+                                            <br>
+
                                             <label th:for="category">Drug category:</label>
                                             <select class="form-control" name="category" id="category" th:field="*{drugCategory}">
                                                 <option th:each="itemCategory : ${categories}"
                                                         th:value="${itemCategory}" th:text="${itemCategory}">
                                                 </option>
                                             </select>
+                                            <label class="text-danger" th:if="${#fields.hasErrors('drugCategory')}" th:errors="*{drugCategory}"></label>
+                                            <br>
+
                                             <label th:for="price">Price:</label>
                                             <input type="number"
                                                    class="form-control"
                                                    id="price"
                                                    placeholder="Enter drug price"
                                                    th:field="*{price}"/>
+                                            <label class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></label>
+                                            <br>
+
                                             <label th:for="stock">Stock:</label>
                                             <input type="number"
                                                    class="form-control"
                                                    id="stock"
                                                    placeholder="Enter drug stock"
                                                    th:field="*{stock}"/>
+                                            <label class="text-danger" th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></label>
+                                            <br>
+
                                             <label th:for="drugDistributor">Distributor:</label>
                                             <select class="form-control" name="drugDistributor" id="drugDistributor" th:field="*{distributor.id}">
                                                 <option th:each="itemDistributor : ${distributors}"
                                                         th:value="${itemDistributor.getId()}" th:text="${itemDistributor.getName()}">
                                                 </option>
                                             </select>
+                                            <label class="text-danger" th:if="${#fields.hasErrors('distributor')}" th:errors="*{distributor}"></label>
+                                            <br>
+
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>

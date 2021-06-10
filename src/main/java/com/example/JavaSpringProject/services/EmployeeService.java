@@ -7,9 +7,7 @@ import com.example.JavaSpringProject.services.interfaces.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class EmployeeService implements IEmployeeService {
@@ -24,6 +22,14 @@ public class EmployeeService implements IEmployeeService {
     public List<Employee> findAll() {
         List<Employee> employees = new LinkedList<>();
         employeeRepository.findAll().iterator().forEachRemaining(employees::add);
+        return employees;
+    }
+
+    @Override
+    public List<Employee> findAllMedicalStaff(){
+        List<Employee> employees = new LinkedList<>();
+        Collection<String> medicalStaff = new ArrayList<>(Arrays.asList("Doctor", "Asistent Medical"));
+        employeeRepository.findByOccupationNameIn(medicalStaff).iterator().forEachRemaining(employees::add);
         return employees;
     }
 

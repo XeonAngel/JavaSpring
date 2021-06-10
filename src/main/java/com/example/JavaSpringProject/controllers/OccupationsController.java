@@ -38,12 +38,12 @@ public class OccupationsController extends BaseController<Occupation> {
 
     @PostMapping("/occupations/create_edit")
     @Override
-    public String saveOrUpdate(Occupation entity, BindingResult bindingResult) {
+    public ModelAndView saveOrUpdate(Occupation entity, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "Occupations/create_edit";
+            return new ModelAndView("Occupations/create_edit");
         }
         Occupation savedOccupation =  occupationService.save(entity);
-        return "redirect:/Occupations";
+        return new ModelAndView("redirect:/occupations");
     }
 
     @GetMapping("/occupations/details/{id}")

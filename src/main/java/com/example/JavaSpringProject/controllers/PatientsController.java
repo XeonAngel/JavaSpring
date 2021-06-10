@@ -41,12 +41,14 @@ public class PatientsController extends BaseController<Patient> {
 
     @PostMapping("/patients/create_edit")
     @Override
-    public String saveOrUpdate(Patient entity, BindingResult bindingResult) {
+    public ModelAndView saveOrUpdate(Patient entity, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "Patients/create_edit";
+            ModelAndView modelAndView = new ModelAndView("Patients/create_edit");
+            modelAndView.addObject("bloodTypes", BloodType.values());
+            return modelAndView;
         }
         Patient savedPatient = patientService.save(entity);
-        return "redirect:/Patients";
+        return new ModelAndView("redirect:/patients");
     }
 
     @GetMapping("/patients/details/{id}")

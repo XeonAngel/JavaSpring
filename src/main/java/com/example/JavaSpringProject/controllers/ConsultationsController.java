@@ -20,14 +20,13 @@ public class ConsultationsController extends BaseController<Consultation> {
         return modelAndView;
     }
 
-    ///TODO: Find All DOCTORS not every Employee
     @GetMapping("/consultations/create")
     @Override
     public ModelAndView create() {
         ModelAndView modelAndView = new ModelAndView("Consultations/create_edit");
         modelAndView.addObject("consultation", new Consultation());
         modelAndView.addObject("patients",patientService.findAll());
-        modelAndView.addObject("employees",employeeService.findAll());
+        modelAndView.addObject("employees",employeeService.findAllMedicalStaff());
         modelAndView.addObject("drugs",drugService.findAll());
         return modelAndView;
     }
@@ -45,13 +44,17 @@ public class ConsultationsController extends BaseController<Consultation> {
 
     @PostMapping("/consultations/create_edit")
     @Override
-    public String saveOrUpdate(Consultation entity, BindingResult bindingResult) {
+    public ModelAndView saveOrUpdate(Consultation entity, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "Consultations/create_edit";
+            ModelAndView modelAndView = new ModelAndView("Consultations/create_edit");
+            modelAndView.addObject("patients",patientService.findAll());
+            modelAndView.addObject("employees",employeeService.findAll());
+            modelAndView.addObject("drugs",drugService.findAll());
+            return modelAndView;
         }
         entity.setCreated(new java.util.Date());
         Consultation savedConsultation = consultationService.save(entity);
-        return "redirect:/Consultations";
+        return new ModelAndView("redirect:/consultations");
     }
 
     @GetMapping("/consultations/details/{id}")
@@ -62,7 +65,6 @@ public class ConsultationsController extends BaseController<Consultation> {
         return modelAndView;
     }
 
-    //TODO: try Catch
     @RequestMapping("/consultations/delete/{id}")
     @Override
     public String delete(@PathVariable String id) {

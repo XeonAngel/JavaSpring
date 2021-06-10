@@ -37,7 +37,7 @@
                                                    id="name"
                                                    placeholder="Enter department name"
                                                    th:field="*{name}"/>
-                                            <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></label>
+                                            <label class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></label>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>

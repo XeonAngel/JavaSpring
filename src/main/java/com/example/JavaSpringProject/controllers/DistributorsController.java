@@ -38,12 +38,12 @@ public class DistributorsController extends BaseController<Distributor> {
 
     @PostMapping("/distributors/create_edit")
     @Override
-    public String saveOrUpdate(Distributor entity, BindingResult bindingResult) {
+    public ModelAndView saveOrUpdate(Distributor entity, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "Distributors/create_edit";
+            return new ModelAndView("Distributors/create_edit");
         }
         Distributor savedDistributor = distributorService.save(entity);
-        return "redirect:/Distributors";
+        return new ModelAndView("redirect:/distributors");
     }
 
     @GetMapping("/distributors/details/{id}")

@@ -11,7 +11,7 @@ public interface IBaseController<T>{
     ModelAndView index();
     ModelAndView create();
     ModelAndView edit(@PathVariable String id);
-    String saveOrUpdate(@Valid @ModelAttribute T entity, BindingResult bindingResult);
+    ModelAndView saveOrUpdate(@Valid @ModelAttribute T entity, BindingResult bindingResult);
     ModelAndView details(@PathVariable String id);
     String delete(@PathVariable String id);
 }
