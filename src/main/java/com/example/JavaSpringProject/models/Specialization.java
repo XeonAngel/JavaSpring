@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -18,6 +19,7 @@ public class Specialization {
 
     @Size(message = "No more than 200 characters", max = 200)
     @NotNull(message = "Specialization name is required")
+    @NotEmpty(message = "Specialization name is required")
     private String name;
 
     @OneToMany(mappedBy = "specialization")

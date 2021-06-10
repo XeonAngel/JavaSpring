@@ -6,6 +6,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -20,6 +21,7 @@ public class Drug {
 
     @Size(message = "No more than 200 characters", max = 200)
     @NotNull(message = "Drug name is required")
+    @NotEmpty(message = "Drug name is required")
     private String name;
 
     @NotNull(message = "Drug category is required")

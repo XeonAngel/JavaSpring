@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -16,10 +17,12 @@ public class Person {
     private Long id;
 
     @Size(message = "No more than 200 characters", max = 200)
+    @NotEmpty(message = "Firstname is required")
     @NotNull(message = "Firstname is required")
     private String firstName;
 
     @Size(message = "No more than 200 characters", max = 200)
+    @NotEmpty(message = "Lastname is required")
     @NotNull(message = "Lastname is required")
     private String lastName;
 
