@@ -47,6 +47,7 @@
                                         <th style="width: 10px">#</th>
                                         <th>Patient name</th>
                                         <th>Doctor name</th>
+                                        <th>Consultation date</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
@@ -55,6 +56,7 @@
                                         <td th:text="${consultation.getId()}"></td>
                                         <td th:text="${consultation.getPatient().getFullName()}"></td>
                                         <td th:text="${consultation.getDoctor().getFullName()}"></td>
+                                        <td th:text="${consultation.getCreated()}"></td>
                                         <td>
                                             <a href="#" th:href="@{'/consultations/edit/' + ${consultation.getId()}}">Edit</a> |
                                             <a href="#"

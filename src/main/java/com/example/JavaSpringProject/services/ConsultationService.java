@@ -5,6 +5,8 @@ import com.example.JavaSpringProject.models.Consultation;
 import com.example.JavaSpringProject.repositories.ConsultationRepository;
 import com.example.JavaSpringProject.services.interfaces.IConsultationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
@@ -48,5 +50,9 @@ public class ConsultationService implements IConsultationService {
             throw new ResourceNotFoundException("Consultation " + Id + " not found!");
         }
         consultationRepository.deleteById(Id);
+    }
+
+    public List<Consultation> findAllAtPage(Pageable pageable){
+        return consultationRepository.findAll(pageable).toList();
     }
 }
