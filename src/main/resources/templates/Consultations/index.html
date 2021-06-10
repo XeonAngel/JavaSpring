@@ -30,24 +30,68 @@
                                         Add new consultation
                                     </a>
                                 </h3>
-                                <div class="card-tools">
-                                    <ul class="pagination pagination-sm float-right">
-                                        <li class="page-item"><a class="page-link" href="#">«</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">»</a></li>
-                                    </ul>
+                                <div class="card-tools" th:if="${totalPages > 1}">
+                                    <div class="float-right">
+                                        Total rows : [[${totalItems}]]
+                                        <ul class="pagination pagination-sm">
+                                            <li class="page-item">
+                                                <a class="page-link" th:if="${currentPage > totalPages}"
+                                                   th:href="@{'/consultations/' + ${currentPage+1} +
+                                                   '?sortField=' + ${sortField} +
+                                                   '&sortOrder=' + ${sortOrder}}">«</a>
+                                                <a class="page-link" style="color: black"
+                                                   th:unless="${currentPage > totalPages}">«</a>
+                                            </li>
+
+                                            <li class="page-item" th:each="i:${#numbers.sequence(1,totalPages)}">
+                                                <a class="page-link" th:if="${currentPage != i}"
+                                                   th:href="@{'/consultations/' + ${i} +
+                                                   '?sortField=' + ${sortField} +
+                                                   '&sortOrder=' + ${sortOrder}}">[[${i}]]</a>
+                                                <a class="page-link" style="color: black"
+                                                   th:unless="${currentPage != i}">[[${i}]]</a>
+                                            </li>
+
+                                            <li class="page-item">
+                                                <a class="page-link" th:if="${currentPage < totalPages}"
+                                                   th:href="@{'/consultations/' + ${currentPage+1} +
+                                                   '?sortField=' + ${sortField} +
+                                                   '&sortOrder=' + ${sortOrder}}">»</a>
+                                                <a class="page-link" style="color: black"
+                                                   th:unless="${currentPage < totalPages}">»</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-body p-0">
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th style="width: 10px">#</th>
-                                        <th>Patient name</th>
-                                        <th>Doctor name</th>
-                                        <th>Consultation date</th>
+                                        <th style="width: 10px">
+                                            <a th:href="@{'/consultations/' + ${currentPage}
+                                            + '?sortField=id' + '&sortOrder=' + ${reverseSortOrder}}">
+                                            #
+                                            </a>
+                                        </th>
+                                        <th>
+                                            <a th:href="@{'/consultations/' + ${currentPage}
+                                            + '?sortField=patient.firstName' + '&sortOrder=' + ${reverseSortOrder}}">
+                                                Patient name
+                                            </a>
+                                        </th>
+                                        <th>
+                                            <a th:href="@{'/consultations/' + ${currentPage}
+                                            + '?sortField=doctor.firstName' + '&sortOrder=' + ${reverseSortOrder}}">
+                                                Doctor name
+                                            </a>
+                                        </th>
+                                        <th>
+                                            <a th:href="@{'/consultations/' + ${currentPage}
+                                            + '?sortField=created' + '&sortOrder=' + ${reverseSortOrder}}">
+                                                Consultation date
+                                            </a>
+                                        </th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
@@ -58,9 +102,11 @@
                                         <td th:text="${consultation.getDoctor().getFullName()}"></td>
                                         <td th:text="${consultation.getCreated()}"></td>
                                         <td>
-                                            <a href="#" th:href="@{'/consultations/edit/' + ${consultation.getId()}}">Edit</a> |
                                             <a href="#"
-                                               th:href="@{'/consultations/details/' + ${consultation.getId()}}">Details</a> |
+                                               th:href="@{'/consultations/edit/' + ${consultation.getId()}}">Edit</a> |
+                                            <a href="#"
+                                               th:href="@{'/consultations/details/' + ${consultation.getId()}}">Details</a>
+                                            |
                                             <a href="#"
                                                th:href="@{'/consultations/delete/' + ${consultation.getId()}}">Delete</a>
                                         </td>

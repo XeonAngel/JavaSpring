@@ -10,5 +10,4 @@ import java.util.List;
 @Repository
 public interface ConsultationRepository extends BaseRepository<Consultation>{
     List<Consultation> findByPatientFirstName(String name);
-    List<Consultation> findAllByPatientLastName(String LastName, Pageable pageable);
 }
