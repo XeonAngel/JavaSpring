@@ -1,7 +1,6 @@
-package com.example.JavaSpringProject.tests;
+package com.example.JavaSpringProject.repositories;
 
 import com.example.JavaSpringProject.models.Department;
-import com.example.JavaSpringProject.repositories.DepartmentRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.example.JavaSpringProject.tests;
+package com.example.JavaSpringProject;
 
 import com.example.JavaSpringProject.models.Drug;
 import com.example.JavaSpringProject.models.Enums.Rank;

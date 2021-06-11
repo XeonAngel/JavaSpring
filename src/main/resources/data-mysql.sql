@@ -49,3 +49,13 @@ Insert Into consultation_drug(consultation_id, drug_id) Values (3,1);
 Insert Into consultation_drug(consultation_id, drug_id) Values (3,2);
 Insert Into consultation_drug(consultation_id, drug_id) Values (3,4);
 Insert Into consultation_drug(consultation_id, drug_id) Values (4,4);
+
+
+Insert Into user(username, password , enabled) Values ('manager','$2a$10$Q.XPsUqRVKV6sfdUnD/gteGKJHpm0oRm4PGmWUK5G6nQZ.NyWkMRm',1);
+Insert Into user(username, password , enabled) Values ('doctor','$2a$10$25KGsJZ4ilOy0lybOwccQ.XU2N8gL/91nqUfzrAALhBHVKwYERvtm',1);
+
+Insert Into authority(authority) Values ('ROLE_MANAGER');
+Insert Into authority(authority) Values ('ROLE_DOCTOR');
+
+Insert Into user_authority(username, authority_id) Values ('manager',1);
+Insert Into user_authority(username, authority_id) Values ('doctor',2);

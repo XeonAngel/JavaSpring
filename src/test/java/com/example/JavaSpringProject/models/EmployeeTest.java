@@ -1,6 +1,5 @@
-package com.example.JavaSpringProject.tests;
+package com.example.JavaSpringProject.models;
 
-import com.example.JavaSpringProject.models.Employee;
 import com.example.JavaSpringProject.repositories.EmployeeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
@@ -19,12 +18,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertFalse;
-import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.*;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-@AutoConfigureTestDatabase(replace = Replace.NONE)
-@ActiveProfiles("mysql")
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@ActiveProfiles("h2")
 @Slf4j
 public class EmployeeTest {
     @Autowired
